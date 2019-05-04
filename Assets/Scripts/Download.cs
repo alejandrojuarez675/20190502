@@ -17,7 +17,8 @@ public class Download : MonoBehaviour
         using (var uwr = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET))
         {
             uwr.downloadHandler = new DownloadHandlerAssetBundle(url, 0);
-            yield return uwr.Send();
+//            yield return uwr.Send();
+            yield return uwr.SendWebRequest();
             AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(uwr);
             _myPrefab = bundle.LoadAsset(nombreObjecto) as GameObject;
             _myPrefab.transform.position = new Vector3(positionX, positionY, positionZ);
